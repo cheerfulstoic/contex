@@ -24,6 +24,7 @@ defmodule Contex.SVG.Sanitize do
   """
   @spec basic_sanitize(any()) :: any()
   def basic_sanitize(data) when is_binary(data), do: html_escape(data)
+  def basic_sanitize(data) when is_atom(data), do: Atom.to_string(data)
   def basic_sanitize(data) when is_number(data), do: data
 
   @spec html_escape(String.t()) :: String.t()
